@@ -11,28 +11,34 @@ int main() {
     printf("Size of stack [MAX:100]: ");
     scanf("%d", &size);
     stack = (int*)malloc(size*sizeof(int));
-    printf("\n\t 1. PUSH\n\t 2. POP\n\t 3. DISPLAY\n\t 4. EXIT");
+    printf("*CHOOSE OPTIONS FROM*\n\t 1. PUSH\n\t 2. POP\n\t 3. DISPLAY\n\t 4. EXIT");
 
     do{
         printf("\n Enter your choice: ");
         scanf("%d", &choice);
-        switch(choice) {
-            case 1:
-                push();
-                break;
-            case 2:
-                pop();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                printf("Exit point.//");
-                break;
-            default:
-                printf("Choose a proper option.");
+        if(choice==1 || choice ==2 || choice==3 || choice==4) {
+            switch(choice) {
+                case 1:
+                    push();
+                    break;
+                case 2:
+                    pop();
+                    break;
+                case 3:
+                    display();
+                    break;
+                case 4:
+                    printf("Exit point.//");
+                    break;
+                default:
+                    printf("Choose a proper option.");
+            }
+        }
+        else {
+            choice=4;
         }
     } while(choice!=4);
+    free(stack);
     return 0;
 }
 
@@ -53,7 +59,6 @@ void pop() {
         printf("Stack UNDERFLOW");
     } else {
         printf("POPPED ELEMENT: %d", stack[top]);
-        stack[top]=0;
         top--;
         printf("\nTOP ~> %d", top);
     }
@@ -62,7 +67,7 @@ void pop() {
 void display() {
     if(top >= 0){
         printf("STACK REPRESENTATION");
-        for(i=size-1; i >= 0; i--) {
+        for(i=top; i >= 0; i--) {
             printf("\n\t  __");
             printf("\n\t| ");
             printf("%d | ~> %d", stack[i], i);

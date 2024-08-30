@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main()
+int main()
 {
     int r, i, j, k, spaces;
     printf("Row: ");
@@ -19,4 +19,5 @@ void main()
         }
         printf("\n");
     }
+    return 0;
 }
