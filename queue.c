@@ -46,6 +46,8 @@ int main()
             help();
             break;
         }
+
+        // hello
     } while (choice != 5);
     free(queue);
     return 0;
@@ -53,7 +55,7 @@ int main()
 
 void enqueue()
 {
-    if (rear == size - 1)
+    if (rear >= size - 1)
     {
         printf("\t\t\tQUEUE is full\n");
     }
@@ -61,8 +63,7 @@ void enqueue()
     {
         printf("Insert element: ");
         scanf("%d", &num);
-        rear++;
-        queue[rear] = num;
+        queue[++rear] = num;
         printf("\nWelcome element %d!", num);
         printf("\n~>|%d|", num);
     }
@@ -80,10 +81,9 @@ void dequeue()
     }
     else
     {
-        int removedElement = queue[rear];
+        int removedElement = queue[front++];
         printf("\n- |::|COUNTER|~>|%d|", removedElement);
-        printf("\nElement %d checked out from queue", queue[front]);
-        front++;
+        printf("\nElement %d checked out from queue", removedElement);
     }
 }
 
